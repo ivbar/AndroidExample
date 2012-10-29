@@ -1,9 +1,10 @@
 package com.exampleapp.movies;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
-public class StartActivity extends FragmentActivity {
+import com.actionbarsherlock.app.SherlockActivity;
+
+public class StartActivity extends SherlockActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

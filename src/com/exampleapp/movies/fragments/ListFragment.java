@@ -1,14 +1,14 @@
 package com.exampleapp.movies.fragments;
 
-import com.exampleapp.movies.R;
-
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class ListFragment extends Fragment {
+import com.actionbarsherlock.app.SherlockFragment;
+import com.exampleapp.movies.R;
+
+public class ListFragment extends SherlockFragment {
 
     /**
      * The system calls this when creating the fragment. Within your

@@ -3,11 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <fragment
-        android:id="@+id/listFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        class="com.exampleapp.movies.fragments.ListFragment"
-        tools:layout="@layout/list_fragment" />
+  
 
 </RelativeLayout>
