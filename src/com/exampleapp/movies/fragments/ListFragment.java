@@ -4,16 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.exampleapp.movies.R;
 
 public class ListFragment extends SherlockFragment {
 
+    private ListView mListView;
+    private LinearLayout mLoadingLayout;
+
     public ListFragment() {
-	// TODO Auto-generated constructor stub
     }
-    
+
     /**
      * The system calls this when creating the fragment. Within your
      * implementation, you should initialize essential components of the
@@ -22,8 +26,9 @@ public class ListFragment extends SherlockFragment {
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
-	// TODO Auto-generated method stub
 	super.onCreate(savedInstanceState);
+
+	// /3/movie/popular
     }
 
     /**
@@ -35,10 +40,16 @@ public class ListFragment extends SherlockFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
 	    Bundle savedInstanceState) {
-	ViewGroup root = (ViewGroup) inflater.inflate(R.layout.list_fragment, null);
+	ViewGroup root = (ViewGroup) inflater.inflate(R.layout.list_fragment,
+		null);
 
-	root.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-	
+	root.setLayoutParams(new ViewGroup.LayoutParams(
+		ViewGroup.LayoutParams.MATCH_PARENT,
+		ViewGroup.LayoutParams.MATCH_PARENT));
+
+	mListView = (ListView) root.findViewById(R.id.listView);
+	mLoadingLayout = (LinearLayout) root.findViewById(R.id.loadingLayout);
+
 	return root;
     }
 
@@ -54,4 +65,5 @@ public class ListFragment extends SherlockFragment {
 	// TODO Auto-generated method stub
 	super.onPause();
     }
+
 }
