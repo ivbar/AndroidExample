@@ -9,11 +9,12 @@ import android.widget.ListView;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.exampleapp.movies.R;
+import com.exampleapp.movies.util.AppSettings;
+import com.exampleapp.movies.util.DownloadHelper;
 
 public class ListFragment extends SherlockFragment {
 
-    private ListView mListView;
-    private LinearLayout mLoadingLayout;
+    private DownloadHelper mDownloadHelper;
 
     public ListFragment() {
     }
@@ -27,8 +28,8 @@ public class ListFragment extends SherlockFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 	super.onCreate(savedInstanceState);
-
-	// /3/movie/popular
+	mDownloadHelper = new DownloadHelper(getActivity());
+	mDownloadHelper.startDownload(AppSettings.SERVER_URL + "/3/movie/popular");
     }
 
     /**
@@ -47,11 +48,20 @@ public class ListFragment extends SherlockFragment {
 		ViewGroup.LayoutParams.MATCH_PARENT,
 		ViewGroup.LayoutParams.MATCH_PARENT));
 
-	mListView = (ListView) root.findViewById(R.id.listView);
-	mLoadingLayout = (LinearLayout) root.findViewById(R.id.loadingLayout);
+	ListView mListView = (ListView) root.findViewById(R.id.listView);
+	LinearLayout mLoadingLayout = (LinearLayout) root
+		.findViewById(R.id.loadingLayout);
 
+	mDownloadHelper.setLoadingUi(mLoadingLayout);
+	mDownloadHelper.setListUi(mListView);
 	return root;
     }
+
+//    @Override
+//    public void onResume() {
+//	super.onResume();
+//	mDownloadHelper.resume();
+//    }
 
     /**
      * The system calls this method as the first indication that the user is
@@ -60,10 +70,12 @@ public class ListFragment extends SherlockFragment {
      * that should be persisted beyond the current user session (because the
      * user might not come back).
      */
-    @Override
-    public void onPause() {
-	// TODO Auto-generated method stub
-	super.onPause();
-    }
+//    @Override
+//    public void onPause() {
+//	super.onPause();
+//	
+//	// If we what to stop downloading
+//	mDownloadHelper.pause();
+//    }
 
 }
